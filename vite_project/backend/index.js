@@ -15,9 +15,9 @@ async function database() {
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
   });
-    const[rows]=db.excecute("select * from fooditems")
-    await db.end()
-    return rows
+  const [rows] = await db.execute("SELECT * FROM fooditems")
+  await db.end()
+  return rows
 
     
 }
@@ -78,9 +78,17 @@ async function run(){
         //  "command":"FILTER",
         //  "category":"pizza" or "burger" or "main course" or "snacks" or "dessert"
         //} "response":"showing all your pizza"
-
+        //2.If user want to navigate to the page 
+        //{
+        //  "command":"NAVIGATE",
+        //  "page":"home" or "cart" or "profile" or "about" or "menu" or "login" or "orders" or "items"
+        //  "path":"/home" or "/cart" or "/profile" or "/about" or "/menu" or "/login" or "/orders" or "/items"
+        //} "response":"showing all of your pizza"
+        //}
         }
-    
+    catch(error){
+        console.log("Error in run function:", error);
+    }
     
     }
 
